@@ -23,7 +23,7 @@ export class Success extends Component {
           
             <AppBar title="Success" />
             <Box m={2} sx = {{
-                                my : 4,
+                                my : 8,
                                 mx: 4,
                                 display : 'flex',
                                 flexDirection : 'Column',

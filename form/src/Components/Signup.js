@@ -3,20 +3,21 @@ import UserDetails from './UserDetails';
 import Confirmation from './Confirmation';
 import PersonalDetails from './PersonalDetails';
 import Success from './Success';
+import TextEditor from './editor/TextEditor';
 
 
 export default  class Signup extends Component {
         state = {
                 step:1,
                 email:'',
-                username:'',
+                userName:'',
                 password:'',
                 firstName:'',
                 lastName:'',
                 country:'',
-                levelOfEducation:'',
+                highestEducation:'',
                 dateOfBirth:'',
-                address:'',
+                selfDescription:'',
                 errors: {}, // Added errors object to track validation errors
         }
         
@@ -81,8 +82,8 @@ export default  class Signup extends Component {
               };
         render() {
                const{ step } = this.state;
-               const { email,username,password,firstName,lastName,country,levelOfEducation,dateOfBirth,address,errors,} = this.state;
-               const values = {email,username,password,firstName,lastName,country,levelOfEducation,dateOfBirth,address}
+               const { email,userName,password,firstName,lastName,country,highestEducation,dateOfBirth,selfDescription,errors} = this.state;
+               const values = {email,userName,password,firstName,lastName,country,highestEducation,dateOfBirth,selfDescription}
 
                switch(step) {
                 case 1: 
@@ -105,7 +106,16 @@ export default  class Signup extends Component {
                         errors={errors}
                         />
                  )
-                 case 3: 
+                case 3 : 
+                return(
+                  <TextEditor 
+                   prevStep={this.prevStep}
+                   nextStep={this.nextStep}
+                   handleChange={this.handleChange}
+                   values={values}
+                  />
+                )
+                 case 4: 
                  return(
                         <Confirmation
                         prevStep={this.prevStep}
@@ -113,7 +123,7 @@ export default  class Signup extends Component {
                         values={values}
                         />
                  )
-                 case 4:
+                 case 5:
                         return(
                                 <Success/>
                         )

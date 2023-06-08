@@ -7,28 +7,27 @@ import Signup from './Components/Signup';
 import SignInSide from './Components/login/SignInSide';
 import {
   BrowserRouter as Router,
-  Switch,
   Routes,
   Route
 } from "react-router-dom";
 
 
 function App() {
-    
+
   return (
     <>
-    <Router>
-    <Navbar  />
-     <Routes>
-          <Route  path="/signup" element={<Signup/>}/>
-           <Route path="/signinside" element={<SignInSide/>}/>
-      </Routes>
-      
-        
-        
-    </Router>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/signinside" element={<SignInSide />} />
+        </Routes>
 
-  
+
+
+      </Router>
+
+
     </>
   );
 }
