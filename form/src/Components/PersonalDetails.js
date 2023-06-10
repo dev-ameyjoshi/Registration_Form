@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Container, Typography, Grid, TextField, Button, MenuItem, Box } from '@material-ui/core'
-import FileUpload from './fileupload/file-upload.component';
+// import FileUpload from './fileupload/file-upload.component';
 import { isWidthDown } from "@material-ui/core/withWidth";
 // import { LocalizationProvider } from '@mui/x-date-pickers';
 // import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 // import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 // import MuiPicker from './MuiPicker/MuiPicker.jsx';
-
-
+import UploadImage from "../Components/fileupload/file-upload.component";
+import axios from 'axios';
 
 const PersonalDetails = ({ prevStep, nextStep, handleChange, values, errors, files }) => {
 
@@ -30,7 +30,8 @@ const PersonalDetails = ({ prevStep, nextStep, handleChange, values, errors, fil
   ];
   const Continue = (e) => {
     e.preventDefault();
-
+    axios.get('http://localhost:8080/signup')
+    .then(console.log("Uploaded Image!"));
     nextStep();
 
   };
@@ -129,14 +130,14 @@ const PersonalDetails = ({ prevStep, nextStep, handleChange, values, errors, fil
             {/* Upload Component */}
             <Grid item xs={12}>
               <form onSubmit={Continue}>
-
-                <FileUpload
+                  <UploadImage />
+                {/* <FileUpload
                   accept=".jpg,.png,.jpeg"
                   label="Upload : Proof Of Identification(Max Size accepted : 500 KB)"
                   multiple
                   updateFilesCb={updateUploadedFiles}
                 />
-                {/* <button type="submit">Create New User</button> */}
+                <button type="submit">Create New User</button> */}
               </form>
             </Grid>
 

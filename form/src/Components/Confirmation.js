@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Grid, List, ListItem, ListItemText, Button } from '@material-ui/core'
 import UserService from '../services/UserService.js';
-
+import axios from 'axios';
 
 class Confirmation extends React.Component {
   constructor(values) {
@@ -136,6 +136,8 @@ class Confirmation extends React.Component {
   console.log(values);
   const Continue = e => {
     e.preventDefault();
+    axios.get('http://localhost:8080/signup')
+    .then(console.log("Sent Mail!"));
     this.saveUser(values);
     nextStep();
     

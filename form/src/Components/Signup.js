@@ -5,7 +5,6 @@ import PersonalDetails from './PersonalDetails';
 import Success from './Success';
 import TextEditor from './editor/TextEditor';
 
-
 export default  class Signup extends Component {
         state = {
                 step:1,

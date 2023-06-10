@@ -8,9 +8,9 @@ const sendMail = async (req, res) => {
                 host: "smtp.ethereal.email",
                 port: 587,
                 auth: {
-                        user: 'rene84@ethereal.email',
-                        pass: '6ryqp8MrK7DcMEAqCc'
-                },
+                        user: 'leta45@ethereal.email',
+                        pass: 'JdTXpEeau2jMquGecw'
+                    },
         });
 
         let info = await transporter.sendMail({
