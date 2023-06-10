@@ -46,7 +46,16 @@ export default  class Signup extends Component {
                 const nameRegex = /^[a-zA-Z]+$/;
                 return nameRegex.test(name);
               };
-            
+
+              validateUserName = (userName) => {
+                const userNameRegex = /^(?=.*[a-zA-Z])[a-zA-Z0-9_]{4,20}$/;
+                return userNameRegex.test(userName);
+              }
+
+              validatePassword = (password) =>{
+                const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()]).{8,}$/;
+                return passwordRegex.test(password);
+              }
               // Update input value and perform validation
               handleChange = (input) => (e) => {
                 const value = e.target.value;
@@ -62,7 +71,18 @@ export default  class Signup extends Component {
                       ? "Invalid first name"
                       : "";
                     break;
-                  case "lastName":
+                    case "userName" :
+                      errors.userName = !this.validateUserName(value)
+                      ? "Invalid username"
+                      : "";
+                    break;
+                    case "password":
+                      errors.password = !this.validatePassword(value)
+                      ? "Invalid Password"
+                      : "";
+                    break;
+
+                    case "lastName":
                     errors.lastName = !this.validateName(value)
                       ? "Invalid last name"
                       : "";

@@ -4,7 +4,7 @@ import './App.css';
 // import { Link } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
 import Signup from './Components/Signup';
-import SignInSide from './Components/login/SignInSide';
+// import SignInSide from './Components/login/SignInSide';
 import {
   BrowserRouter as Router,
   Routes,
@@ -19,8 +19,8 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/signinside" element={<SignInSide />} />
+          <Route path="/" element={<Signup />} />
+          
         </Routes>
 
 

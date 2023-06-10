@@ -1,7 +1,7 @@
-import React, { useRef,useMemo,useState } from 'react';
+import React, { useState } from 'react';
 import RichTextEditor from './RichTextEditor';
-import { Container, Typography, Grid, TextField, Button, Box } from '@material-ui/core'
-// import "./App.css";
+import { Container, Grid,  Button, Box } from '@material-ui/core'
+
 
 export default function TextEditor({ prevStep, nextStep, handleChange,values}) {
         const [value, setValue] = useState("");
@@ -53,8 +53,8 @@ export default function TextEditor({ prevStep, nextStep, handleChange,values}) {
                                                                         onClick={Previous}
                                                                         type="submit"
                                                                         fullWidth
-                                                                        variant="contained"
-                                                                        color="primary"
+                                                                        variant="text"
+                                                                        color="success"
                                                                 >
                                                                         Previous
                                                                 </Button>
@@ -65,8 +65,8 @@ export default function TextEditor({ prevStep, nextStep, handleChange,values}) {
                                                                         onClick={Continue}
                                                                         type="submit"
                                                                         fullWidth
-                                                                        variant="contained"
-                                                                        color="primary"
+                                                                        variant="text"
+                                                                        color="success"
                                                                 >
                                                                         Next
                                                                 </Button>

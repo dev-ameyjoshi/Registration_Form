@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Grid, List, ListItem, ListItemText, Button } from '@material-ui/core'
+import { Container, Grid, List, ListItem, ListItemText, Button, Paper, Box } from '@material-ui/core'
 import UserService from '../services/UserService.js';
 import axios from 'axios';
 
@@ -13,11 +13,11 @@ class Confirmation extends React.Component {
     this.onChangeCountry = this.onChangeCountry.bind(this);
     this.onChangeHighestEducation = this.onChangeHighestEducation.bind(this);
     this.onChangeDateOfBirth = this.onChangeDateOfBirth.bind(this);
-    this.onChangeSelfDescription = this.onChangeSelfDescription.bind(this);
+    // this.onChangeSelfDescription = this.onChangeSelfDescription.bind(this);
     this.saveUser = this.saveUser.bind(this);
     this.newUser = this.newUser.bind(this);
-   
 
+// Original State
     this.state = {
       id: null,
       firstName: "",
@@ -26,12 +26,13 @@ class Confirmation extends React.Component {
       userName: "",
       country: "",
       highestEducation: "",
-      dateOfBirth:"",
-      selfDescription:"",
+      dateOfBirth: "",
+      // selfDescription:"",
       submitted: false
     };
   }
 
+  // To assign values , for the required Fields.
   onChangeFirstName(e) {
     this.setState({
       firstName: e.target.value
@@ -67,16 +68,18 @@ class Confirmation extends React.Component {
       highestEducation: e.target.value
     });
   }
-  onChangeDateOfBirth(e){
+  onChangeDateOfBirth(e) {
     this.setState({
       dateOfBirth: e.target.value
     });
   }
-  onChangeSelfDescription(e){
-    this.setState({
-      selfDescription: e.target.value
-    });
-  }
+  // onChangeSelfDescription(e){
+  //   this.setState({
+  //     selfDescription: e.target.value
+  //   });
+  // }
+
+  //Function To pass the credential values & to save it using UserService in DB.
   saveUser(values) {
     var data = {
       firstName: values.firstName,
@@ -85,8 +88,8 @@ class Confirmation extends React.Component {
       userName: values.userName,
       country: values.country,
       highestEducation: values.highestEducation,
-      dateOfBirth:values.dateOfBirth,
-      selfDescription:values.selfDescription
+      dateOfBirth: values.dateOfBirth,
+      // selfDescription:values.selfDescription
     };
     console.log(data);
 
@@ -100,8 +103,8 @@ class Confirmation extends React.Component {
           userName: res.data.userName,
           country: res.data.country,
           highestEducation: res.data.highestEducation,
-          dateOfBirth:res.data.dateOfBirth,
-          selfDescription:res.data.selfDescription,
+          dateOfBirth: res.data.dateOfBirth,
+          // selfDescription:res.data.selfDescription,
 
           submitted: true
         });
@@ -121,93 +124,105 @@ class Confirmation extends React.Component {
       userName: "",
       country: "",
       highestEducation: "",
-      dateOfBirth:"",
-      selfDescription:"",
+      dateOfBirth: "",
+      // selfDescription:"",
 
       submitted: false
     });
   }
 
-  render(){
-    
-  const {prevStep,nextStep,values} = this.props;
+  render() {
+// Parameters Passed Through Files and axios call to trigger nodemailer component.
+    const { prevStep, nextStep, values } = this.props;
 
-  const { firstName, lastName, email, userName, country,  dateOfBirth,highestEducation,selfDescription } = values
-  console.log(values);
-  const Continue = e => {
-    e.preventDefault();
-    axios.get('http://localhost:8080/signup')
-    .then(console.log("Sent Mail!"));
-    this.saveUser(values);
-    nextStep();
-    
-  }
+    const { firstName, lastName, email, userName, country, dateOfBirth, highestEducation } = values
+    console.log(values);
+    const Continue = e => {
+      e.preventDefault();
+      axios.get('http://localhost:8080/signup')
+        .then(console.log("Sent Mail!"));
+      this.saveUser(values);
+      nextStep();
 
-  const Previous = e => {
-    e.preventDefault();
-    prevStep();
-  }
+    }
 
-  return (
-    <Container component="main" maxWidth="xs">
-      <div>
-        <List>
-          <ListItem>
-            <ListItemText primary="Email" secondary={email} />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="Username" secondary={userName} />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="First Name" secondary={firstName} />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="Date Of Birth" secondary={dateOfBirth} />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="Last Name" secondary={lastName} />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="Country of Residence" secondary={country} />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="Level of Education" secondary={highestEducation} />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="Journey" secondary={selfDescription} />
-          </ListItem>
-          
-          
-        </List>
-
+    const Previous = e => {
+      e.preventDefault();
+      prevStep();
+    }
+// Main Components for the following Confirmation page is as follows:
+    return (
+      <Container component="main" maxWidth="sm" sx={{ mb: 5 }}>
         <br />
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
-            <Button
-              onClick={Previous}
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-            >
-              Previous
-            </Button>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Button
-              onClick={Continue}
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-            >
-              Confirm & Continue
-            </Button>
-          </Grid>
-        </Grid>
-      </div>
-    </Container>
-  );
+        <Paper variant="outlined" sx={{ my: { xs: 4, md: 8 }, p: { xs: 1, md: 1 } }}>
+          <Box m={1} sx={{
+            my: 2,
+            mx: 2,
+            padding: 4,
+            display: 'flex',
+            flexDirection: 'Column',
+
+          }}>
+            <div>
+              <List>
+                <ListItem>
+                  <ListItemText primary="Email" secondary={email} />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="Username" secondary={userName} />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="First Name" secondary={firstName} />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="Date Of Birth" secondary={dateOfBirth} />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="Last Name" secondary={lastName} />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="Country of Residence" secondary={country} />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="Level of Education" secondary={highestEducation} />
+                </ListItem>
+
+
+
+              </List>
+
+              <br />
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <Button
+                    onClick={Previous}
+                    type="submit"
+
+                    fullWidth
+                    variant="text"
+                    color="success"
+                  >
+                    Previous
+                  </Button>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Button
+                    onClick={Continue}
+                    type="submit"
+                    fullWidth
+                    variant="text"
+                    color="success"
+                  >
+                    Confirm
+                  </Button>
+                </Grid>
+              </Grid>
+
+            </div>
+          </Box>
+        </Paper>
+      </Container>
+    );
   }
 }
 
