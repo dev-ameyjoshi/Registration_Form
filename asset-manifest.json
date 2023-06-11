@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Registration_Form/static/css/main.b51819f4.css",
+    "main.js": "/Registration_Form/static/js/main.89aa0a54.js",
+    "static/media/assets.gif": "/Registration_Form/static/media/assets.45292a6c561023d2c3fc.gif",
+    "index.html": "/Registration_Form/index.html",
+    "main.b51819f4.css.map": "/Registration_Form/static/css/main.b51819f4.css.map",
+    "main.89aa0a54.js.map": "/Registration_Form/static/js/main.89aa0a54.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b51819f4.css",
+    "static/js/main.89aa0a54.js"
+  ]
+}
