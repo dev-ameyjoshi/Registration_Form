@@ -1,10 +1,8 @@
 import React from 'react'
 import './App.css';
-// import { AppBar } from '@mui/material';
-// import { Link } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
 import Signup from './Components/Signup';
-// import SignInSide from './Components/login/SignInSide';
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -19,7 +17,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Signup />} />
+          <Route path="/Registration_Form" element={<Signup />} />
           
         </Routes>
 
