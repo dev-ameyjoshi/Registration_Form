@@ -27,7 +27,7 @@ function Navbar() {
             noWrap
             component="a"
             // href ="/Signup"
-            href="/SignInSide"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -47,7 +47,7 @@ function Navbar() {
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
-              href='/signup'
+              href='/'
 
               color="inherit"
             >
@@ -60,7 +60,7 @@ function Navbar() {
             variant="h5"
             noWrap
             component="a"
-            href="/SignInSide"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
