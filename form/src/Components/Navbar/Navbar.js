@@ -13,8 +13,6 @@ import HomeIcon from '@mui/icons-material/Home';
 
 function Navbar() {
 
-
-
 //Following Component for the Navbar is as follows:
 
   return (
